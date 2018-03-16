@@ -49,11 +49,8 @@ do_mount()
     fi
     DEV_LABEL="${LABEL}"
 
-    # Use the device name in case the drive doesn't have label
-    if [ -z ${DEV_LABEL} ]; then
-        DEV_LABEL="${DEVBASE}"
-    fi
-
+    # Prefix the device name in case the drive doesn't have label
+    #MOUNT_POINT="/media/${DEVBASE}_${LABEL}"
     MOUNT_POINT="/media/${DEV_LABEL}"
 
     ${log} "Mount point: ${MOUNT_POINT}"
