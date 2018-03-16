@@ -1,3 +1,5 @@
+Change from original version is to mount on /media/{label}
+
 ### Automount USB drives with systemd
 
 On inserting an USB drive, automounts the drive at /media/ as a
