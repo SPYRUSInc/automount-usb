@@ -49,6 +49,11 @@ do_mount()
     fi
     DEV_LABEL="${LABEL}"
 
+    #if drive has no label, use the device base
+    if [ -z ${DEV_LABEL} ]; then
+        DEV_LABEL="${DEVBASE}"
+    fi
+
     # Prefix the device name in case the drive doesn't have label
     #MOUNT_POINT="/media/${DEVBASE}_${LABEL}"
     MOUNT_POINT="/media/${DEV_LABEL}"
@@ -71,7 +76,7 @@ do_mount()
         exit 1
     else
         # Track the mounted drives
-        echo "${MOUNT_POINT}:${DEVBASE}" | cat >> "/var/log/usb-mount.track" 
+        echo "${MOUNT_POINT}:${DEVBASE}" | cat >> "/var/log/usb-mount.track"
     fi
 
     ${log} "Mounted ${DEVICE} at ${MOUNT_POINT}"
